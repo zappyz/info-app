@@ -1,24 +1,17 @@
-import React, { useState} from "react";
-import Axios from "axios";
-import "./App.css";
+import React from 'react'
+import Dashboard from './containers/dashboard'
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyles } from '@mui/styled-engine'
 
-function App() {
-
-  const [joke, setJoke] = useState("");
-
-  const getJoke = () => {
-    fetch("https://official-joke-api.appspot.com/random_joke")
-    .then((response) => response.json())
-    .then((data) => {
-        setJoke(data.setup + "..." + data.punchline);
-      });
-  };
+const App = () => {
   return (
     <div>
-      Hello <button onClick={getJoke}>Get getJoke</button>
-      {joke}
+      <ThemeProvider>
+        <GlobalStyles />
+        <Dashboard />
+      </ThemeProvider>
     </div>
   )
 }
 
-export default App;
+export default App
